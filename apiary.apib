@@ -1,0 +1,82 @@
+FORMAT: 1A
+HOST: http://140.86.1.71/pajpark/webresources/park
+
+
+# pajpark
+
+Simple api to retrieve info about parkingspaces
+
+## Parkingspace services [/parkingspaces]
+
+### List All Parkingspaces [GET]
+
+Lists all parkingspaces and returns an array of parkingspaces
+
++ Response 200 (application/json)
+
+        [
+            {
+                "name": "Ibsenhuset",
+                "parkingSpaceId": 102,
+                "gpsLat": 59.91682,
+                "gpsLong": 10.73725,
+                "automat": [
+                    {
+                        "automatid": 102,
+                        "automattype": "T300"
+                    }
+                ]    
+            },
+            {
+                "name": "Lysaker Torg",
+                "parkingSpaceId": 103,
+                "gpsLat": 59.91179,
+                "gpsLong": 10.63579,
+                "automat": [
+                    {
+                        "automatid": 103,
+                        "automattype": "SS1200"
+                    }
+                ]
+            }
+        ]
+
+### Create a New Parkingspace [POST]
+
+You may create your own parkingspace using this action. It takes a JSON
+object containing a parkingspace
+
++ Request (application/json)
+
+        {
+            "name": "Lysaker Torg2",
+            "gpsLat": 59.91179,
+            "gpsLong": 10.63579,
+            "automat": [
+                {
+                    "automatid": 103,
+                    "automattype": "SS1200"
+                }
+            ]
+        }
+    
++ Response 201 (application/json)
+
+    + Headers
+
+            Location: /parkingspace/104
+
+    + Body
+
+            {
+                "name": "Lysaker Torg2",
+                "parkingSpaceId": 104,
+                "gpsLat": 59.91179,
+                "gpsLong": 10.63579,
+                "automat": [
+                    {
+                        "automatid": 103,
+                        "automattype": "SS1200"
+                    }
+                ]
+            }
